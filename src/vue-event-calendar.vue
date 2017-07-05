@@ -374,18 +374,4 @@ export default {
     padding: 0;
   }
 }
-
-.selected-day:after{
-  content:'';
-  height:100%;
-  width:100%;
-  background-color:#f0f0f0;
-  border-radius:100%;
-  position:absolute;
-  left:17px;
-  top:5px;
-  height:38px;
-  width:38px;
-}
-
 </style>
