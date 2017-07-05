@@ -94,14 +94,13 @@ export default {
   },
   methods: {
     handleChangeCurDay (date) {
+      console.log('here with ' + date );
       let events = this.events.filter(function(event) {
         return isEqualDateStr(event.date, date)
       })
-      if (events.length > 0) {
-        this.selectedDayEvents = {
-          date: date,
-          events: events
-        }
+      this.selectedDayEvents = {
+        date: date,
+        events: events
       }
       this.$emit('day-changed', {
         date: date,
@@ -374,6 +373,19 @@ export default {
     margin: 0;
     padding: 0;
   }
+}
+
+.selected-day:after{
+  content:'';
+  height:100%;
+  width:100%;
+  background-color:#f0f0f0;
+  border-radius:100%;
+  position:absolute;
+  left:17px;
+  top:5px;
+  height:38px;
+  width:38px;
 }
 
 </style>
