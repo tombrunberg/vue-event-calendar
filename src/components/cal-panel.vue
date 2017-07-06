@@ -15,7 +15,9 @@
             today: date.status ? (today == date.date) : false,
             event: date.status ? (date.title != undefined) : false,
             [calendar.options.className] : (date.date == selectedDay)
-          }">
+          }"
+          v-bind:data-datestring="yyyymmdd(date.date)"
+          >
           <p class="date-num"
             @click="handleChangeCurday(date)"
             :style="{color: date.title != undefined ? ((date.date == selectedDay) ? '#fff' : customColor) : 'inherit'}">
@@ -32,7 +34,7 @@
 
 <script>
 import i18n from '../i18n.js'
-import { dateTimeFormatter, isEqualDateStr} from '../tools.js'
+import { dateTimeFormatter, yyyymmdd, isEqualDateStr } from '../tools.js'
 
 const inBrowser = typeof window !== 'undefined'
 export default {
@@ -95,6 +97,7 @@ export default {
     }
   },
   methods: {
+    yyyymmdd,
     nextMonth () {
       this.$EventCalendar.nextMonth()
       this.$emit('month-changed', this.curYearMonth)

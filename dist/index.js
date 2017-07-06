@@ -83,6 +83,7 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["b"] = dateTimeFormatter;
 /* harmony export (immutable) */ __webpack_exports__["a"] = isEqualDateStr;
+/* harmony export (immutable) */ __webpack_exports__["c"] = yyyymmdd;
 function dateTimeFormatter(date, format) {
   // 时间格式化辅助函数 date:毫秒数 format:'yyyy-MM-dd hh:mm:ss'
   if (!date || date == "") {
@@ -140,6 +141,23 @@ function isEqualDateStr(dateStr1, dateStr2) {
     return false;
   }
   return true;
+}
+
+function yyyymmdd() {
+  var date = '2017/08/07';
+
+  var year = date.split('/')[0];
+  var month = date.split('/')[1];
+  var day = date.split('/')[2];
+
+  var result = year;
+  if (month < 10) result += '0';
+  result += month;
+
+  if (day < 10) result += '0';
+  result += day;
+
+  return result;
 }
 
 /***/ }),
@@ -472,6 +490,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -541,6 +562,7 @@ var inBrowser = typeof window !== 'undefined';
     }
   },
   methods: {
+    yyyymmdd: __WEBPACK_IMPORTED_MODULE_1__tools_js__["c" /* yyyymmdd */],
     nextMonth: function nextMonth() {
       this.$EventCalendar.nextMonth();
       this.$emit('month-changed', this.curYearMonth);
@@ -989,8 +1011,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       class: ( _obj = {
         today: date.status ? (_vm.today == date.date) : false,
           event: date.status ? (date.title != undefined) : false
-      }, _obj[_vm.calendar.options.className] = (date.date == _vm.selectedDay), _obj )
-    }, [_c('p', {
+      }, _obj[_vm.calendar.options.className] = (date.date == _vm.selectedDay), _obj ),
+      attrs: {
+        "data-rel": _vm.yyyymmdd
+      }
+    }, [_c('span', [_vm._v(_vm._s(date.date))]), _vm._v(" "), _c('p', {
       staticClass: "date-num",
       style: ({
         color: date.title != undefined ? ((date.date == _vm.selectedDay) ? '#fff' : _vm.customColor) : 'inherit'

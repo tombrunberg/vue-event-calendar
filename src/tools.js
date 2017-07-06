@@ -57,3 +57,21 @@ export function isEqualDateStr (dateStr1, dateStr2) {
   }
   return true
 }
+
+export function yyyymmdd (date) {
+
+  let year = date.split('/')[0]
+  let month = date.split('/')[1]
+  let day = date.split('/')[2]
+   
+  let result = year;
+  if( month < 10 )
+    result += '0'
+  result += month
+
+  if( day < 10 )
+    result += '0'
+  result += day
+
+  return result
+}
