@@ -143,8 +143,7 @@ function isEqualDateStr(dateStr1, dateStr2) {
   return true;
 }
 
-function yyyymmdd() {
-  var date = '2017/08/07';
+function yyyymmdd(date) {
 
   var year = date.split('/')[0];
   var month = date.split('/')[1];
@@ -458,7 +457,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__i18n_js__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tools_js__ = __webpack_require__(0);
-//
 //
 //
 //
@@ -1013,9 +1011,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           event: date.status ? (date.title != undefined) : false
       }, _obj[_vm.calendar.options.className] = (date.date == _vm.selectedDay), _obj ),
       attrs: {
-        "data-rel": _vm.yyyymmdd
+        "data-datestring": _vm.yyyymmdd(date.date)
       }
-    }, [_c('span', [_vm._v(_vm._s(date.date))]), _vm._v(" "), _c('p', {
+    }, [_c('p', {
       staticClass: "date-num",
       style: ({
         color: date.title != undefined ? ((date.date == _vm.selectedDay) ? '#fff' : _vm.customColor) : 'inherit'
