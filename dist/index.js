@@ -403,10 +403,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     locale: {
       type: String,
       required: true
-    },
-    color: {
-      type: String,
-      required: true
     }
   },
   computed: {
@@ -587,6 +583,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -635,7 +633,8 @@ var inBrowser = typeof window !== 'undefined';
         return {
           options: {
             locale: 'en', //zh
-            color: ' #f29543'
+            color: ' #f29543',
+            selectable: 'events' // or all
           },
           params: {
             curYear: dateObj.getFullYear(),
@@ -668,14 +667,25 @@ var inBrowser = typeof window !== 'undefined';
 
   methods: {
     handleChangeCurDay: function handleChangeCurDay(date) {
-      console.log('here with ' + date);
       var events = this.events.filter(function (event) {
         return __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__tools_js__["a" /* isEqualDateStr */])(event.date, date);
       });
-      this.selectedDayEvents = {
-        date: date,
-        events: events
-      };
+
+      console.log(window.VueCalendarBarEventBus.CALENDAR_EVENTS_DATA);
+
+      if (this.calendarOptions.options.selectable == 'events') {
+        if (events.length > 0) {
+          this.selectedDayEvents = {
+            date: date,
+            events: events
+          };
+        }
+      } else {
+        this.selectedDayEvents = {
+          date: date,
+          events: events
+        };
+      }
       this.$emit('day-changed', {
         date: date,
         events: events
@@ -728,7 +738,8 @@ function install(Vue) {
   var DEFAULT_OPTION = {
     locale: 'en', //en
     color: ' #f29543',
-    className: 'selected-day'
+    className: 'selected-day',
+    selectable: 'events'
   };
   var Calendar = {
     $vm: null,
@@ -929,7 +940,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "dayEvents": _vm.selectedDayEvents,
       "locale": _vm.calendarOptions.options.locale,
-      "color": _vm.calendarOptions.options.color
+      "color": _vm.calendarOptions.options.color,
+      "selectable": _vm.calendarOptions.options.selectable
     }
   }, [_vm._t("default", null, {
     showEvents: _vm.selectedDayEvents.events

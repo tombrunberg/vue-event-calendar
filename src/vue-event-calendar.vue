@@ -10,7 +10,9 @@
     <cal-events
       :dayEvents="selectedDayEvents"
       :locale="calendarOptions.options.locale"
-      :color="calendarOptions.options.color">
+      :color="calendarOptions.options.color"
+      :selectable="calendarOptions.options.selectable"
+      >
       <slot :showEvents="selectedDayEvents.events"></slot>
     </cal-events>
   </div>
@@ -62,7 +64,8 @@ export default {
         return {
           options: {
             locale: 'en', //zh
-            color: ' #f29543'
+            color: ' #f29543',
+            selectable: 'events' // or all
           },
           params: {
               curYear: dateObj.getFullYear(),
@@ -94,13 +97,24 @@ export default {
   },
   methods: {
     handleChangeCurDay (date) {
-      console.log('here with ' + date );
       let events = this.events.filter(function(event) {
         return isEqualDateStr(event.date, date)
       })
-      this.selectedDayEvents = {
-        date: date,
-        events: events
+
+      console.log( window.VueCalendarBarEventBus.CALENDAR_EVENTS_DATA )
+
+      if( this.calendarOptions.options.selectable == 'events') {
+        if( events.length > 0 ) {
+          this.selectedDayEvents = {
+            date: date,
+            events: events
+          }
+        }
+      } else {
+        this.selectedDayEvents = {
+          date: date,
+          events: events
+        }
       }
       this.$emit('day-changed', {
         date: date,
