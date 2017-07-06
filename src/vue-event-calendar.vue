@@ -271,6 +271,20 @@ export default {
             margin-left: -18px;
             margin-top: -19px;
           }
+          .is-selectable{
+            content: '';
+            border: 0px solid @base-orange;
+            background-color: #fff;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            margin-left: -18px;
+            margin-top: -19px;
+          }
           .is-today{
             content: '';
             background-color: @base-orange;
