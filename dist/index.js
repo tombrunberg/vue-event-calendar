@@ -475,6 +475,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -998,7 +999,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         borderColor: _vm.customColor,
         backgroundColor: (date.date == _vm.selectedDay) ? _vm.customColor : 'inherit'
       })
-    }) : _vm._e()])
+    }) : _c('span', {
+      staticClass: "is-selectable"
+    })])
     var _obj;
   }))])])
 },staticRenderFns: []}
