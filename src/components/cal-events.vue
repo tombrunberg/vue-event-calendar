@@ -7,14 +7,13 @@
       <slot>
         <div class='rolewrap'>
           <h2>Pilots</h2>
-          <div v-for="(event, index) in sortOut('licensed',events)" class="event-item">
+          <div v-for="(event, index) in sortOut('pilot',events)" class="event-item">
             <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
           </div>
         </div>
-      </slot>
-      <slot>
+
         <h2>pilot</h2>
-        <div v-for="(event, index) in sortOut('pilot',events)" class="event-item">
+        <div v-for="(event, index) in sortOut('licensed',events)" class="event-item">
           <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
         </div>
       </slot>
