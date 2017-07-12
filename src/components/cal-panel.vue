@@ -16,14 +16,14 @@
             event: date.status ? (date.title != undefined) : false,
             [calendar.options.className] : (date.date == selectedDay)
           }"
-          v-bind:data-datestring="yyyymmdd(date.date)"
           >
           <p class="date-num"
             @click="handleChangeCurday(date)"
             :style="{color: date.title != undefined ? ((date.date == selectedDay) ? '#fff' : customColor) : 'inherit'}">
             {{date.status ? date.date.split('/')[2] : '&nbsp'}}</p>
           <span v-if="date.status ? (today == date.date) : false" class="is-today" :style="{backgroundColor: customColor }" ></span>
-          <span v-if="date.status ? (date.title != undefined) : false" class="is-event"
+
+          <span v-if="date.status ? (date.title != undefined) : false" :class="eventClass(date.date)"
             :style="{borderColor: customColor, backgroundColor: (date.date == selectedDay) ? customColor : 'inherit'}"></span>
           <span v-else class="is-selectable"></span>
         </div>
@@ -75,6 +75,8 @@ export default {
               status: status
             }
             this.events.forEach((event) => {
+              
+              tempItem.statusClass = event.statusClass || ''
               if (isEqualDateStr(event.date, tempItem.date)) {
                 tempItem.title = event.title
                 tempItem.desc = event.desc || ''
@@ -97,6 +99,40 @@ export default {
     }
   },
   methods: {
+    eventClass (curDate) {
+
+      let selectedDate = new Date(curDate) 
+
+      //inialize object; list requires, list has, pilot true/false
+      let result = {
+        ['pilot']: false,
+        ['requires']: {},
+        ['has']: {}
+      }
+
+      this.events.map(function(elem, key) {
+        let elemDate = new Date(elem.date);
+        console.log( selectedDate.getTime() + ' -- ' + elemDate.getTime() )
+
+        if( elemDate.getTime() == selectedDate.getTime() ) {
+          
+          // if is pilot, then 
+          if( elem.role == 'pilot' )
+            result.pilot = true
+
+
+
+        }
+      });
+
+      let resultClasses = 'is-event';
+      if( result.pilot == true )
+        resultClasses += ' pilot-yes'
+      else
+        resultClasses += ' pilot-no'
+
+      return resultClasses
+    },
     yyyymmdd,
     nextMonth () {
       this.$EventCalendar.nextMonth()

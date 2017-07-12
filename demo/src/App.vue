@@ -1,13 +1,14 @@
 <template>
-  <div id="app">
+  <div id="app">germogps
     <h1>vue-event-calendar</h1>
-    <h2 class="t-center">Default template</h2>
+    <h2 class="t-center">Defaultgigearjgi r</h2>
     <vue-event-calendar
       :events="demoEvents"
       @day-changed="handleDayChanged"
       @month-changed="handleMonthChanged"
     ></vue-event-calendar>
-    <h2 class="t-center mt150">Custom template</h2>
+    
+    <h2 class="t-center mt150">Custom templatet</h2>
     <vue-event-calendar :events="demoEvents">
       <template scope="props">
         <div v-for="(event, index) in props.showEvents" class="event-item">
@@ -28,14 +29,17 @@ export default {
       demoEvents: [{
         date: `${today.getFullYear()}/${today.getMonth() + 1}/15`,
         title: 'Title-1',
-        desc: 'longlonglong description'
+        desc: 'longlonglong description',
+        class: 'seppoC'
       },{
         date: `${today.getFullYear()}/${today.getMonth() + 1}/24`,
-        title: 'Title-2'
+        title: 'Title-1211ð3',
+        class: 'seppo'
       },{
         date: `${today.getFullYear()}/${today.getMonth() === 11 ? 1 : today.getMonth() + 2}/06`,
         title: 'Title-3',
-        desc: 'description'
+        desc: 'description',
+        class: 'seppo'
       }]
     }
   },

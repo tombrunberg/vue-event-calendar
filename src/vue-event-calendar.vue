@@ -100,9 +100,6 @@ export default {
       let events = this.events.filter(function(event) {
         return isEqualDateStr(event.date, date)
       })
-
-      console.log( window.VueCalendarBarEventBus.CALENDAR_EVENTS_DATA )
-
       if( this.calendarOptions.options.selectable == 'events') {
         if( events.length > 0 ) {
           this.selectedDayEvents = {

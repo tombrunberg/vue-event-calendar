@@ -7,7 +7,7 @@
       @day-changed="handleDayChanged"
       @month-changed="handleMonthChanged"
     ></vue-event-calendar>
-    <h2 class="t-center">Custom template</h2>
+    <h2 class="t-center">Custom template1</h2>
     <vue-event-calendar :events="demoEvents">
       <template scope="props">
         <div v-for="(event, index) in props.showEvents" class="event-item">
@@ -27,19 +27,28 @@ export default {
     return {
       demoEvents: [{
         date: `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`,
+        title: 'Seppo khoerh',
+        desc: 'longlonglong description',
+        role: 'licensed'
+      },{
+        date: `${today.getFullYear()}/${today.getMonth() + 1}/${today.getDate()}`,
         title: 'Title-1',
-        desc: 'longlonglong description'
+        desc: 'longlonglong description',
+        role: 'licensed'
       },{
         date: `${today.getFullYear()}/${today.getMonth() + 1}/15`,
         title: 'Title-1',
-        desc: 'longlonglong description'
+        desc: 'longlonglong description',
+        role: 'pilot'
       },{
         date: `${today.getFullYear()}/${today.getMonth() + 1}/24`,
-        title: 'Title-2'
+        title: 'Title-2',
+        role: 'licensed'
       },{
         date: `${today.getFullYear()}/${today.getMonth() === 11 ? 1 : today.getMonth() + 2}/06`,
-        title: 'Title-3',
-        desc: 'description'
+        title: 'Title-3222',
+        desc: 'description',
+        role: 'licensed'
       }]
     }
   },

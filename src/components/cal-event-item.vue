@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
-    <h3 class="title">{{index+1}}. {{event.title}}</h3>
-    <p class="time">{{dateTimeFormatter(Date.parse(new Date(event.date)),i18n[locale].fullFormat)}}</p>
+    <p><b>{{event.title}} - {{event.role}}</b></p>
     <p class="desc">{{event.desc}}</p>
   </div>
 </template>
@@ -26,10 +25,15 @@ export default {
     locale: {
       type: String,
       required: true
+    },
+    role: {
+      type: String,
+      required: true,
     }
   },
   methods: {
     dateTimeFormatter
   }
 }
+
 </script>
