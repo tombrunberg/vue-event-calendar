@@ -1,7 +1,6 @@
 <template>
   <div class="wrapper">
-    <p><b>{{event.title}} - {{event.role}}</b></p>
-    <p class="desc">{{event.desc}}</p>
+    <p><b>{{event.title}}</b></p>
   </div>
 </template>
 <script>

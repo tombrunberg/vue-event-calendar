@@ -341,7 +341,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
@@ -385,6 +384,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tools_js__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cal_event_item_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cal_event_item_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__cal_event_item_vue__);
+//
+//
+//
 //
 //
 //
@@ -953,9 +955,7 @@ module.exports = Component.exports
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "wrapper"
-  }, [_c('p', [_c('b', [_vm._v(_vm._s(_vm.event.title) + " - " + _vm._s(_vm.event.role))])]), _vm._v(" "), _c('p', {
-    staticClass: "desc"
-  }, [_vm._v(_vm._s(_vm.event.desc))])])
+  }, [_c('p', [_c('b', [_vm._v(_vm._s(_vm.event.title))])])])
 },staticRenderFns: []}
 
 /***/ }),
@@ -972,7 +972,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "cal-events"
   }, [_vm._t("default", [_c('div', {
     staticClass: "rolewrap"
-  }, [_c('h2', [_vm._v("Pilots")]), _vm._v(" "), _vm._l((_vm.sortOut('licensed', _vm.events)), function(event, index) {
+  }, [_c('h2', [_vm._v("Pilots")]), _vm._v(" "), _vm._l((_vm.sortOut('pilot', _vm.events)), function(event, index) {
     return _c('div', {
       staticClass: "event-item"
     }, [_c('cal-event-item', {
@@ -982,7 +982,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "locale": _vm.locale
       }
     })], 1)
-  })], 2)]), _vm._v(" "), _vm._t("default", [_c('h2', [_vm._v("pilot")]), _vm._v(" "), _vm._l((_vm.sortOut('pilot', _vm.events)), function(event, index) {
+  })], 2), _vm._v(" "), _c('h2', [_vm._v("Licensed")]), _vm._v(" "), _vm._l((_vm.sortOut('licensed', _vm.events)), function(event, index) {
+    return _c('div', {
+      staticClass: "event-item"
+    }, [_c('cal-event-item', {
+      attrs: {
+        "event": event,
+        "index": index,
+        "locale": _vm.locale
+      }
+    })], 1)
+  }), _vm._v(" "), _c('h2', [_vm._v("Students")]), _vm._v(" "), _vm._l((_vm.sortOut('student', _vm.events)), function(event, index) {
     return _c('div', {
       staticClass: "event-item"
     }, [_c('cal-event-item', {

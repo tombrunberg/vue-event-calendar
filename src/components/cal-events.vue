@@ -11,11 +11,15 @@
             <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
           </div>
         </div>
-
-        <h2>pilot</h2>
+        <h2>Licensed</h2>
         <div v-for="(event, index) in sortOut('licensed',events)" class="event-item">
           <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
         </div>
+        <h2>Students</h2>
+        <div v-for="(event, index) in sortOut('student',events)" class="event-item">
+          <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
+        </div>
+
       </slot>
     </div>
   </div>
