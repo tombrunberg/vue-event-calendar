@@ -341,6 +341,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -366,7 +369,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     role: {
       type: String,
-      required: true
+      required: false
     }
   },
   methods: {
@@ -384,6 +387,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tools_js__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cal_event_item_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cal_event_item_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__cal_event_item_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -460,6 +476,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     dateTimeFormatter: __WEBPACK_IMPORTED_MODULE_1__tools_js__["b" /* dateTimeFormatter */],
+    hasRoles: function hasRoles(role, events) {
+      var count = 0;
+
+      events.map(function (elem, index) {
+        console.log(elem.role);
+        console.log(' vs ' + role);
+        if (elem.role == role) {
+          count++;
+        }
+      });
+      console.log(count);
+      return count;
+    },
     sortOut: function sortOut(role, events) {
 
       var tempArr = [];
@@ -598,8 +627,6 @@ var inBrowser = typeof window !== 'undefined';
 
       this.events.map(function (elem, key) {
         var elemDate = new Date(elem.date);
-        console.log(selectedDate.getTime() + ' -- ' + elemDate.getTime());
-
         if (elemDate.getTime() == selectedDate.getTime()) {
 
           // if is pilot, then 
@@ -955,7 +982,7 @@ module.exports = Component.exports
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "wrapper"
-  }, [_c('p', [_c('b', [_vm._v(_vm._s(_vm.event.title))])])])
+  }, [_c('p', [_c('span', [_c('b', [_vm._v(_vm._s(_vm.event.title))])])]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.event.desc))])])
 },staticRenderFns: []}
 
 /***/ }),
@@ -970,39 +997,43 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "date"
   }, [_vm._v("\n    " + _vm._s(_vm.dayEventsTitle) + "\n  ")]), _vm._v(" "), _c('div', {
     staticClass: "cal-events"
-  }, [_vm._t("default", [_c('div', {
+  }, [_vm._t("default", [(_vm.hasRoles('pilot', _vm.events)) ? _c('div', {
     staticClass: "rolewrap"
-  }, [_c('h2', [_vm._v("Pilots")]), _vm._v(" "), _vm._l((_vm.sortOut('pilot', _vm.events)), function(event, index) {
-    return _c('div', {
-      staticClass: "event-item"
-    }, [_c('cal-event-item', {
+  }, [_c('h2', [_vm._v("Pilots ")]), _vm._v(" "), _c('div', {
+    staticClass: "event-item"
+  }, _vm._l((_vm.sortOut('pilot', _vm.events)), function(event, index) {
+    return _c('div', {}, [_c('cal-event-item', {
       attrs: {
         "event": event,
         "index": index,
         "locale": _vm.locale
       }
     })], 1)
-  })], 2), _vm._v(" "), _c('h2', [_vm._v("Licensed")]), _vm._v(" "), _vm._l((_vm.sortOut('licensed', _vm.events)), function(event, index) {
-    return _c('div', {
-      staticClass: "event-item"
-    }, [_c('cal-event-item', {
+  }))]) : _vm._e(), _vm._v(" "), (_vm.hasRoles('licensed', _vm.events)) ? _c('div', {
+    staticClass: "rolewrap"
+  }, [_c('h2', [_vm._v("Licensed")]), _vm._v(" "), _c('div', {
+    staticClass: "event-item"
+  }, _vm._l((_vm.sortOut('licensed', _vm.events)), function(event, index) {
+    return _c('div', {}, [_c('cal-event-item', {
       attrs: {
         "event": event,
         "index": index,
         "locale": _vm.locale
       }
     })], 1)
-  }), _vm._v(" "), _c('h2', [_vm._v("Students")]), _vm._v(" "), _vm._l((_vm.sortOut('student', _vm.events)), function(event, index) {
-    return _c('div', {
-      staticClass: "event-item"
-    }, [_c('cal-event-item', {
+  }))]) : _vm._e(), _vm._v(" "), (_vm.hasRoles('student', _vm.events)) ? _c('div', {
+    staticClass: "rolewrap"
+  }, [_c('h2', [_vm._v("Students")]), _vm._v(" "), _c('div', {
+    staticClass: "event-item"
+  }, _vm._l((_vm.sortOut('student', _vm.events)), function(event, index) {
+    return _c('div', {}, [_c('cal-event-item', {
       attrs: {
         "event": event,
         "index": index,
         "locale": _vm.locale
       }
     })], 1)
-  })])], 2)])
+  }))]) : _vm._e()])], 2)])
 },staticRenderFns: []}
 
 /***/ }),

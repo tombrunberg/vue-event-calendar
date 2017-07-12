@@ -5,19 +5,32 @@
     </h2>
     <div class="cal-events">
       <slot>
-        <div class='rolewrap'>
-          <h2>Pilots</h2>
-          <div v-for="(event, index) in sortOut('pilot',events)" class="event-item">
-            <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
+
+        <div class='rolewrap' v-if="hasRoles('pilot', events)">
+          <h2>Pilots </h2>
+          <div class="event-item">
+            <div v-for="(event, index) in sortOut('pilot',events)" class="">
+              <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
+            </div>
           </div>
         </div>
-        <h2>Licensed</h2>
-        <div v-for="(event, index) in sortOut('licensed',events)" class="event-item">
-          <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
+
+        <div class='rolewrap' v-if="hasRoles('licensed', events)">
+          <h2>Licensed</h2>
+          <div class="event-item">
+            <div v-for="(event, index) in sortOut('licensed',events)" class="">
+              <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
+            </div>
+          </div>
         </div>
-        <h2>Students</h2>
-        <div v-for="(event, index) in sortOut('student',events)" class="event-item">
-          <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
+
+        <div class='rolewrap' v-if="hasRoles('student', events)">
+          <h2>Students</h2>
+          <div class="event-item">
+            <div v-for="(event, index) in sortOut('student',events)" class="">
+              <cal-event-item :event="event" :index="index" :locale="locale"></cal-event-item>
+            </div>
+          </div>
         </div>
 
       </slot>
@@ -73,6 +86,19 @@ export default {
   },
   methods: {
     dateTimeFormatter,
+    hasRoles (role,events) {
+      let count = 0
+
+      events.map(function(elem, index){
+        console.log( elem.role )
+        console.log( ' vs ' + role )
+        if( elem.role == role ) {
+          count++
+        }
+      })
+      console.log(count)
+      return count
+    },
     sortOut (role, events) {
 
       let tempArr = [];

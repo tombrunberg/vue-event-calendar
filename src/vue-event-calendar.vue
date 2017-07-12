@@ -319,6 +319,9 @@ export default {
     .cal-events{
       height: 100%;
     }
+    .rolewrap{
+      margin-top:10px;
+    }
     .date{
       max-width: 60%;
       min-width: 200px;
@@ -331,7 +334,6 @@ export default {
     }
     .event-item{
       padding: 5px 20px;
-      margin-top: 15px;
       box-shadow: 0 3px 11px 2px rgba(0,0,0,.1);
       background-color: #fff;
       border-radius: 5px;

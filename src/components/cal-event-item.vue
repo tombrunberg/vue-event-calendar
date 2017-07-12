@@ -1,6 +1,9 @@
 <template>
   <div class="wrapper">
-    <p><b>{{event.title}}</b></p>
+    <p>
+      <span><b>{{event.title}}</b></span>
+    </p>
+    <p>{{event.desc}}</p>
   </div>
 </template>
 <script>
@@ -27,7 +30,7 @@ export default {
     },
     role: {
       type: String,
-      required: true,
+      required: false,
     }
   },
   methods: {

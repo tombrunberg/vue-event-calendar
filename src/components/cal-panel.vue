@@ -112,16 +112,11 @@ export default {
 
       this.events.map(function(elem, key) {
         let elemDate = new Date(elem.date);
-        console.log( selectedDate.getTime() + ' -- ' + elemDate.getTime() )
-
         if( elemDate.getTime() == selectedDate.getTime() ) {
           
           // if is pilot, then 
           if( elem.role == 'pilot' )
             result.pilot = true
-
-
-
         }
       });
 
